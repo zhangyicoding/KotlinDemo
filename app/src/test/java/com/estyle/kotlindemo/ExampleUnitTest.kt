@@ -9,6 +9,7 @@ import java.util.*
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
+
     @Test
     fun mainTest() {
 
@@ -20,6 +21,7 @@ class ExampleUnitTest {
     // 常量
     val a3 = 3
 
+    @Test
     fun booleanTest() {
         var b1 = true
         var b2 = false
@@ -30,9 +32,11 @@ class ExampleUnitTest {
 
     // 选择表达式，对比三目运算符 ？ ：
     // ==用来比较值。===用来比较对象（可以理解为地址）
+    @Test
     fun maxText(a: Int, b: Int) = if (a > b) a else b
 
     // 判断类型以及自动强转
+    @Test
     fun isTest(obj: Any): Int? {
         if (obj is String) {// 自动转为String
             return obj.length
@@ -44,6 +48,7 @@ class ExampleUnitTest {
     // 循环
 
     // for遍历item
+    @Test
     fun forTest() {
         val list = listOf<String>("AAA", "bbb", "ccc")
         for (str in list) {
@@ -52,6 +57,7 @@ class ExampleUnitTest {
     }
 
     // foreach。it：系统自带的、单个参数的隐式名称，代表参数
+    @Test
     fun for2() {
         val list = listOf<String>("AAA", "bbb", "ccc")
         list.forEach { println(it) }// 等效于下面Java8的高端写法
@@ -64,6 +70,7 @@ class ExampleUnitTest {
     }
 
     // for遍历index
+    @Test
     fun for31Test() {
         val list = listOf<String>("AAA", "bbb", "ccc")
         for (index in list.indices) {
@@ -71,6 +78,7 @@ class ExampleUnitTest {
         }
     }
 
+    @Test
     fun for32Test() {
         val list = listOf<String>("AAA", "bbb", "ccc")
         for ((index, value) in list.withIndex()) {
@@ -79,12 +87,14 @@ class ExampleUnitTest {
     }
 
     // for (int i = 0; i < 10; i+=2) {}
+    @Test
     fun for41Test() {
         for (i in 0..9 step 2) {// [0,9]
             println(i)
         }
     }
 
+    @Test
     fun for42Test() {
         for (i in 0 until 10) {// [0, 10)
             println(i)
@@ -92,6 +102,7 @@ class ExampleUnitTest {
     }
 
     // for (int i = 5; i > 0; i--) {}
+    @Test
     fun for5Test() {
         for (i in 5 downTo 1) {
             println(i)
@@ -99,6 +110,7 @@ class ExampleUnitTest {
     }
 
     // while遍历
+    @Test
     fun whileTest() {
         val list = listOf<String>("AAA", "bbb", "ccc")
         var index = 0
@@ -108,6 +120,7 @@ class ExampleUnitTest {
     }
 
     // when，对比switch
+    @Test
     fun whenTest(obj: Any?) {
         var list = listOf<Int>(-1, -2, -3, -4, -5)
         when (obj) {
@@ -123,11 +136,13 @@ class ExampleUnitTest {
     }
 
     // 可以用任意表达式作为when的条件，而不只是常量
+    @Test
     fun getChar(num: Char): Char {
         return num
     }
 
     // 原始字符串。在没有转义符的情况下，支持换行，展示效果与代码效果一致
+    @Test
     fun originalStringTest() {
         println("""我
             来
@@ -137,6 +152,7 @@ class ExampleUnitTest {
     }
 
     // Array
+    @Test
     fun arrayTest() {
         var arr1 = arrayOf(1, 2, 3)
         var arr2 = intArrayOf(1, 2, 3)
@@ -150,15 +166,24 @@ class ExampleUnitTest {
 //    ---------------------
 //    var arr = arrayOf(1,2,3)
 //    doInBackground(0, *arr, 4)
-    fun doInBackground(vararg params:String) {
+    @Test
+    fun doInBackground(vararg params: String) {
         println(params)
     }
 
     // list（默认ArrayList）
+    @Test
     fun list() {
         val list1 = listOf<String>()// Kotlin独有的EmptyList
         val list2 = listOf("a", "b")// ArrayList
         val list3 = ArrayList<String>()
+    }
+
+    // 匿名函数，感觉就是仿js的东西，实际没啥卵用
+    @Test
+    fun anonymousFunTest() {
+        var list = arrayOf(1, 2, 3)
+        list.forEach(fun(it) = println(it))
     }
 
 }
