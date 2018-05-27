@@ -2,6 +2,7 @@ package com.estyle.kotlindemo
 
 import org.junit.Test
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -186,4 +187,13 @@ class ExampleUnitTest {
         list.forEach(fun(it) = println(it))
     }
 
+    // 空安全。如果list为null，最终结果仍然为null。kt的?.是安全调用，不怕NPE
+    fun printListSize(list: List<String>?) {
+        print(list?.size)// 打印null
+    }
+
+    // 空安全默认值为null。如果希望自定义默认值，这样写
+    fun getListSize(list: List<String>?): Int {
+        return list?.size ?: 0// 如果list为null，默认值是0
+    }
 }
