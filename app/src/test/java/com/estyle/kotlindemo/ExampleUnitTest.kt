@@ -1,13 +1,12 @@
 package com.estyle.kotlindemo
 
+import com.estyle.kotlindemo.democlass.PersonEntity
 import org.junit.Test
 import java.util.*
 import kotlin.collections.ArrayList
 
 /**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
+ * 第一个test文件，运行出问题了
  */
 class ExampleUnitTest {
 
@@ -32,9 +31,22 @@ class ExampleUnitTest {
     }
 
     // 选择表达式，对比三目运算符 ？ ：
-    // ==用来比较值。===用来比较对象（可以理解为地址）
     @Test
     fun maxText(a: Int, b: Int) = if (a > b) a else b
+
+    // 比较
+    // ==和equals相同，比较值
+    // ===比较地址
+    @Test
+    fun equalTest() {
+        val boy = PersonEntity("结果", 1, true)
+        val girl = PersonEntity("结果", 1, false)
+
+        // 注意：PersonEntity重写了equals()方法
+        println("==: ${boy == girl}")// true
+        println("equals: ${boy.equals(girl)}")// true
+        println("===: ${boy === girl}")// false
+    }
 
     // 判断类型以及自动强转
     @Test
